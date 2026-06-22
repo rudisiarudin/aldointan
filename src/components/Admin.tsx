@@ -120,7 +120,7 @@ Intan & Aldo`;
                 <input
                   type="text"
                   className="w-full bg-transparent border border-deep-burgundy/30 px-4 py-2.5 text-sm outline-none focus:border-deep-burgundy rounded-lg"
-                  placeholder="Contoh: Budi Santoso"
+                  placeholder="Contoh: Dayat Solder"
                   value={guestName}
                   onChange={(e) => setGuestName(e.target.value)}
                 />
