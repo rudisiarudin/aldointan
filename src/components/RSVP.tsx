@@ -11,7 +11,7 @@ export const RSVP: React.FC = () => {
   const [isSuccess, setIsSuccess] = useState(false);
   const [name, setName] = useState(urlName || '');
   const [wishes, setWishes] = useState('');
-  const [allWishes, setAllWishes] = useState<{ name: string; wishes: string; attendance: string }[]>([]);
+  const [allWishes, setAllWishes] = useState<{ name: string; wishes: string; attendance: string; reply?: string }[]>([]);
 
   useEffect(() => {
     fetchWishes();
