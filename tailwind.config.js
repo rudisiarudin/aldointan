@@ -1,0 +1,108 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "secondary": "#735c00",
+        "surface-container-high": "#e9e8e5",
+        "on-error": "#ffffff",
+        "inverse-surface": "#2f312f",
+        "tertiary-fixed-dim": "#b6ccb4",
+        "surface": "#faf9f6",
+        "deep-burgundy": "#6B2D2D",
+        "on-secondary-fixed": "#241a00",
+        "on-surface": "#1a1c1a",
+        "surface-bright": "#faf9f6",
+        "muted-gold": "#C5A059",
+        "outline": "#867372",
+        "on-background": "#1a1c1a",
+        "warm-cream": "#FAF9F6",
+        "on-primary-container": "#eb9593",
+        "primary-fixed-dim": "#ffb3b0",
+        "on-error-container": "#93000a",
+        "inverse-primary": "#ffb3b0",
+        "tertiary": "#1c2f1e",
+        "secondary-container": "#fed65b",
+        "on-secondary-container": "#745c00",
+        "background": "#faf9f6",
+        "on-secondary-fixed-variant": "#574500",
+        "surface-variant": "#e3e2e0",
+        "on-primary-fixed-variant": "#733333",
+        "surface-container-low": "#f4f3f1",
+        "error-container": "#ffdad6",
+        "on-secondary": "#ffffff",
+        "surface-container-lowest": "#ffffff",
+        "surface-tint": "#904a49",
+        "secondary-fixed": "#ffe088",
+        "sage-green": "#5D6D5E",
+        "primary": "#4f1819",
+        "on-tertiary-fixed-variant": "#384b39",
+        "on-tertiary": "#ffffff",
+        "primary-container": "#6b2d2d",
+        "on-primary-fixed": "#3b080b",
+        "on-tertiary-fixed": "#0d1f10",
+        "tertiary-fixed": "#d2e9cf",
+        "on-tertiary-container": "#9cb29b",
+        "error": "#ba1a1a",
+        "tertiary-container": "#324533",
+        "paper-white": "#FFFFFF",
+        "secondary-fixed-dim": "#e9c349",
+        "outline-variant": "#d8c1c0",
+        "surface-container-highest": "#e3e2e0",
+        "surface-dim": "#dbdad7",
+        "on-primary": "#ffffff",
+        "inverse-on-surface": "#f2f1ee",
+        "surface-container": "#efeeeb",
+        "primary-fixed": "#ffdad8",
+        "on-surface-variant": "#534342",
+        "ink-black": "#1A1A1A"
+      },
+      borderRadius: {
+        "DEFAULT": "0.25rem",
+        "lg": "0.5rem",
+        "xl": "0.75rem",
+        "full": "9999px"
+      },
+      spacing: {
+        "section-gap": "8rem",
+        "margin-desktop": "4rem",
+        "content-stack": "2rem",
+        "margin-mobile": "1.25rem",
+        "element-tight": "0.75rem",
+        "gutter": "1.5rem"
+      },
+      fontFamily: {
+        "headline-lg": ["Playfair Display", "serif"],
+        "countdown-num": ["Playfair Display", "serif"],
+        "display-hero": ["Caveat", "cursive"],
+        "heading-kids": ["Fredoka", "sans-serif"],
+        "wedding-script": ["Great Vibes", "cursive"],
+        "cormorant": ["Cormorant", "serif"],
+        "label-caps": ["Lato", "sans-serif"],
+        "headline-lg-mobile": ["Playfair Display", "serif"],
+        "countdown-label": ["Lato", "sans-serif"],
+        "subheading-serif": ["Playfair Display", "serif"],
+        "body-main": ["Lato", "sans-serif"]
+      },
+      fontSize: {
+        "headline-lg": ["32px", { lineHeight: "1.2", fontWeight: "600" }],
+        "countdown-num": ["24px", { lineHeight: "1", fontWeight: "600" }],
+        "display-hero": ["48px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "700" }],
+        "label-caps": ["12px", { lineHeight: "1.5", letterSpacing: "0.15em", fontWeight: "600" }],
+        "headline-lg-mobile": ["28px", { lineHeight: "1.2", fontWeight: "600" }],
+        "countdown-label": ["10px", { lineHeight: "1", letterSpacing: "0.1em", fontWeight: "500" }],
+        "subheading-serif": ["20px", { lineHeight: "1.4", fontWeight: "400" }],
+        "body-main": ["16px", { lineHeight: "1.6", fontWeight: "400" }]
+      }
+    }
+  },
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/container-queries')
+  ],
+}

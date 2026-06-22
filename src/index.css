@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+  }
+  body {
+    @apply bg-background text-on-background antialiased selection:bg-muted-gold/30 selection:text-deep-burgundy;
+  }
+}
+
+@layer utilities {
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+  .fill-icon {
+    font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+  
+  /* Custom scrollbar for gallery */
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Music Player Animation */
+@keyframes musicspin { 
+  to { transform: rotate(360deg); } 
+}
+.music-playing { 
+  animation: musicspin 6s linear infinite; 
+}
+
+/* Gift Ticket Animation */
+@keyframes popGlide {
+  0% { transform: rotate(-8deg) translate(0, 0) scale(1); }
+  50% { transform: rotate(-3deg) translate(15px, -10px) scale(1.05); filter: drop-shadow(0 15px 12px rgba(0, 0, 0, 0.15)); }
+  100% { transform: rotate(-8deg) translate(0, 0) scale(1); }
+}
+.ticket-animating {
+  animation: popGlide 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f5f5f5;
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #7B2020;
+  border-radius: 10px;
+  border: 2px solid #f5f5f5;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #5a1a1a;
+}
+
+/* Smooth Infinite Carousel */
+@keyframes carousel {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-50% - 1rem)); } /* Adjust for gap/margin */
+}
+.animate-carousel {
+  animation: carousel 35s linear infinite;
+}
+.animate-carousel:hover {
+  animation-play-state: paused;
+}
