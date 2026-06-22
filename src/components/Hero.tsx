@@ -111,7 +111,7 @@ export const Hero: React.FC = () => {
       </div>
 
       {/* --- SCROLL DOWN SECTION (BELOW FOLD) --- */}
-      <div className="relative z-10 w-full max-w-lg mx-auto flex flex-col items-center justify-center text-center px-4 py-16 bg-[#FDF8F3] overflow-hidden">
+      <div className="relative z-10 w-full min-h-[100dvh] max-w-lg mx-auto flex flex-col items-center justify-center text-center px-4 py-16 bg-[#FDF8F3] overflow-hidden">
         {/* Tilted Polaroid Frame */}
         <AnimatedSection delay={0.2} className="relative w-full max-w-[220px] md:max-w-[260px] aspect-[4/5] md:aspect-square mx-auto mb-10">
           {/* Decorative Back Frame */}
