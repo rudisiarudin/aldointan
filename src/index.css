@@ -5,7 +5,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-snap-type: y mandatory;
+    scroll-snap-type: y proximity;
   }
   body {
     @apply bg-background text-on-background antialiased selection:bg-muted-gold/30 selection:text-deep-burgundy;
