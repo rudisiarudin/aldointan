@@ -39,7 +39,7 @@ export const Hero: React.FC = () => {
       <div className="absolute top-[-20px] left-[-25px] w-[150px] rotate-[-200deg] z-30 pointer-events-none" ref={tlRef2}></div>
 
       {/* --- INITIAL VIEWPORT (100dvh) --- */}
-      <div className="relative z-10 w-full min-h-[100dvh] max-w-lg mx-auto flex flex-col items-center text-center px-4 pt-12 md:pt-20 overflow-hidden snap-start">
+      <div className="relative z-10 w-full max-w-lg mx-auto flex flex-col items-center text-center px-4 pt-12 md:pt-20 overflow-hidden">
         
         {/* Decorative Bottom Right */}
         <img src="/assets/images/10.png" alt="Bottom Right Decoration" className="absolute -bottom-12 -right-12 md:-bottom-16 md:-right-16 w-56 md:w-72 opacity-50 mix-blend-multiply rotate-[25deg] pointer-events-none" onError={(e) => e.currentTarget.style.display = 'none'} />
@@ -111,7 +111,7 @@ export const Hero: React.FC = () => {
       </div>
 
       {/* --- SCROLL DOWN SECTION (BELOW FOLD) --- */}
-      <div className="relative z-10 w-full min-h-[100dvh] max-w-lg mx-auto flex flex-col items-center justify-center text-center px-4 py-16 bg-[#FDF8F3] overflow-hidden snap-start">
+      <div className="relative z-10 w-full max-w-lg mx-auto flex flex-col items-center justify-center text-center px-4 py-16 bg-[#FDF8F3] overflow-hidden">
         {/* Tilted Polaroid Frame */}
         <AnimatedSection delay={0.2} className="relative w-full max-w-[220px] md:max-w-[260px] aspect-[4/5] md:aspect-square mx-auto mb-10">
           {/* Decorative Back Frame */}

@@ -17,7 +17,7 @@ export const Gallery: React.FC = () => {
   ];
 
   return (
-    <section className="py-32 bg-surface-container relative overflow-hidden snap-start min-h-[100dvh] flex flex-col justify-center" id="gallery">
+    <section className="py-32 bg-surface-container relative overflow-hidden flex flex-col justify-center" id="gallery">
       <AnimatedSection delay={0.2} className="px-margin-desktop mb-16 relative z-20 mix-blend-multiply flex flex-col items-center">
         <h2 className="font-headline-lg text-6xl md:text-8xl text-deep-burgundy/10 uppercase tracking-widest text-center">MOMENTS</h2>
         <h2 className="font-wedding-script text-6xl md:text-7xl text-deep-burgundy text-center -mt-12 md:-mt-16 relative z-10 drop-shadow-sm">Captured</h2>

@@ -5,7 +5,7 @@ export const Gift: React.FC = () => {
   const [showGift, setShowGift] = useState(false);
 
   return (
-    <section className="py-24 px-4 md:px-margin-desktop relative bg-surface snap-start min-h-[100dvh] flex flex-col justify-center" id="gift">
+    <section className="py-24 px-4 md:px-margin-desktop relative bg-surface flex flex-col justify-center" id="gift">
       <div className="max-w-lg mx-auto text-center relative z-10 flex flex-col items-center">
         
         {/* Photo and Title Row */}
