@@ -9,7 +9,7 @@ export const RSVP: React.FC = () => {
   const [attendance, setAttendance] = useState<'attend' | 'not_attend'>('attend');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [name, setName] = useState(urlName || '');
+  const [name] = useState(urlName || '');
   const [wishes, setWishes] = useState('');
   const [allWishes, setAllWishes] = useState<{ name: string; wishes: string; attendance: string; reply?: string }[]>([]);
 
