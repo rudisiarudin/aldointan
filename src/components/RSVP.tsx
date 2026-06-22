@@ -20,7 +20,7 @@ export const RSVP: React.FC = () => {
   const fetchWishes = async () => {
     const { data } = await supabase
       .from('guests')
-      .select('name, wishes, attendance')
+      .select('name, wishes, attendance, reply')
       .not('wishes', 'is', null)
       .neq('wishes', '')
       .order('created_at', { ascending: false });
@@ -183,7 +183,15 @@ export const RSVP: React.FC = () => {
                       {g.attendance === 'attend' ? '✓ Hadir' : '✗ Tidak'}
                     </span>
                   </div>
+                  {/* Guest Wish */}
                   <p className="font-body-main text-[13px] text-deep-burgundy/80 italic leading-relaxed pl-10">"{g.wishes}"</p>
+                  {/* Reply from Couple */}
+                  {g.reply && (
+                    <div className="mt-3 ml-10 bg-deep-burgundy/5 border-l-2 border-deep-burgundy/30 rounded-r-lg px-3 py-2">
+                      <p className="text-[10px] font-bold text-deep-burgundy/50 uppercase tracking-widest mb-1">💌 Intan & Aldo</p>
+                      <p className="text-[13px] text-deep-burgundy/80 italic">{g.reply}</p>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
