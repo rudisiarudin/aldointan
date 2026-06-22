@@ -3,14 +3,21 @@ import { AnimatedSection } from './AnimatedSection';
 import { supabase } from '../lib/supabase';
 
 export const RSVP: React.FC = () => {
+  const params = new URLSearchParams(window.location.search);
+  const urlName = params.get('nama');
+
   const [attendance, setAttendance] = useState<'attend' | 'not_attend'>('attend');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [name, setName] = useState('');
+  const [name, setName] = useState(urlName || '');
   const [wishes, setWishes] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!urlName) {
+      alert('Maaf, hanya tamu yang menerima link undangan resmi yang dapat mengisi RSVP.');
+      return;
+    }
     if (!name.trim()) return;
 
     setIsSubmitting(true);
@@ -68,36 +75,33 @@ export const RSVP: React.FC = () => {
             </div>
           ) : (
           <form className="space-y-6" onSubmit={handleSubmit}>
+            {!urlName && (
+              <div className="bg-red-50 text-red-600 p-3 text-xs md:text-sm border border-red-200 rounded-md text-center">
+                Maaf, Anda harus mengakses link undangan resmi untuk dapat mengirim RSVP.
+              </div>
+            )}
             {/* Name Input */}
             <div>
               <label className="block font-label-caps text-[11px] font-bold tracking-wider text-deep-burgundy mb-2">NAME</label>
               <input 
-                className="w-full bg-transparent border border-deep-burgundy/30 px-4 py-3 font-body-main text-[14px] text-deep-burgundy transition-colors placeholder:text-deep-burgundy/40 focus:border-deep-burgundy focus:outline-none focus:ring-0" 
+                className={`w-full bg-transparent border border-deep-burgundy/30 px-4 py-3 font-body-main text-[14px] text-deep-burgundy transition-colors focus:outline-none focus:ring-0 ${urlName ? 'focus:border-deep-burgundy cursor-not-allowed opacity-80' : 'cursor-not-allowed opacity-50'}`} 
                 id="name" 
                 placeholder="Guest Name" 
                 type="text" 
                 value={name}
-                onChange={(e) => setName(e.target.value)}
+                readOnly
                 required
               />
             </div>
 
-            {/* Attendance Buttons */}
+            {/* Attendance Toggle */}
             <div>
               <label className="block font-label-caps text-[11px] font-bold tracking-wider text-deep-burgundy mb-2">ATTENDANCE</label>
-              <div className="flex gap-4">
-                <button 
-                  type="button" 
-                  onClick={() => setAttendance('attend')}
-                  className={`flex-1 py-3 border font-label-caps text-[11px] font-bold tracking-wider transition-colors duration-300 ${attendance === 'attend' ? 'bg-deep-burgundy text-white border-deep-burgundy' : 'bg-transparent text-deep-burgundy border-deep-burgundy/30 hover:border-deep-burgundy/60'}`}
-                >
+              <div className="grid grid-cols-2 gap-4">
+                <button type="button" onClick={() => setAttendance('attend')} className={`py-3 border text-[11px] font-label-caps tracking-widest transition-colors duration-300 ${attendance === 'attend' ? 'bg-deep-burgundy border-deep-burgundy text-paper-white' : 'border-deep-burgundy/30 text-deep-burgundy hover:border-deep-burgundy'}`}>
                   ATTEND
                 </button>
-                <button 
-                  type="button" 
-                  onClick={() => setAttendance('not_attend')}
-                  className={`flex-1 py-3 border font-label-caps text-[11px] font-bold tracking-wider transition-colors duration-300 ${attendance === 'not_attend' ? 'bg-deep-burgundy text-white border-deep-burgundy' : 'bg-transparent text-deep-burgundy border-deep-burgundy/30 hover:border-deep-burgundy/60'}`}
-                >
+                <button type="button" onClick={() => setAttendance('not_attend')} className={`py-3 border text-[11px] font-label-caps tracking-widest transition-colors duration-300 ${attendance === 'not_attend' ? 'bg-deep-burgundy border-deep-burgundy text-paper-white' : 'border-deep-burgundy/30 text-deep-burgundy hover:border-deep-burgundy'}`}>
                   NOT ATTEND
                 </button>
               </div>
@@ -118,9 +122,9 @@ export const RSVP: React.FC = () => {
             {/* Submit Button */}
             <div className="pt-6">
               <button 
-                className={`w-full py-4 bg-[#8b8076] text-white font-label-caps text-[12px] font-bold tracking-[0.2em] rounded-[24px] transition-colors duration-300 flex items-center justify-center gap-2 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:bg-deep-burgundy'}`} 
+                className={`w-full py-4 bg-[#8b8076] text-white font-label-caps text-[12px] font-bold tracking-[0.2em] rounded-[24px] transition-colors duration-300 flex items-center justify-center gap-2 ${(isSubmitting || !urlName) ? 'opacity-70 cursor-not-allowed' : 'hover:bg-deep-burgundy'}`} 
                 type="submit"
-                disabled={isSubmitting}
+                disabled={isSubmitting || !urlName}
               >
                 {isSubmitting ? (
                   <>

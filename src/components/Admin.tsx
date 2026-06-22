@@ -8,7 +8,7 @@ export const Admin: React.FC = () => {
   // WA Generator Form State
   const [guestName, setGuestName] = useState('');
   const [prefix, setPrefix] = useState('Bapak/Ibu/Saudara/i');
-  
+
   const domain = window.location.origin;
 
   useEffect(() => {
@@ -20,7 +20,7 @@ export const Admin: React.FC = () => {
       .from('guests')
       .select('*')
       .order('created_at', { ascending: false });
-    
+
     if (error) {
       console.error('Error fetching guests:', error);
     } else {
@@ -57,19 +57,19 @@ Intan & Aldo`;
   return (
     <div className="min-h-screen bg-surface p-6 md:p-12 font-body-main text-deep-burgundy">
       <h1 className="font-cormorant text-4xl font-bold mb-8 text-center">Admin Dashboard</h1>
-      
+
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
-        
+
         {/* WA Generator Section */}
         <div className="bg-white p-6 md:p-8 shadow-sm border border-deep-burgundy/10 rounded-xl">
           <h2 className="font-cormorant text-2xl font-bold mb-6 flex items-center gap-2">
             <span className="material-symbols-outlined">send</span> WhatsApp Generator
           </h2>
-          
+
           <div className="space-y-4 mb-6">
             <div>
               <label className="block text-xs font-bold tracking-wider text-deep-burgundy/70 mb-2 uppercase">Sebutan / Prefix</label>
-              <select 
+              <select
                 className="w-full bg-transparent border border-deep-burgundy/30 px-4 py-2.5 text-sm outline-none focus:border-deep-burgundy rounded-lg"
                 value={prefix}
                 onChange={(e) => setPrefix(e.target.value)}
@@ -83,13 +83,13 @@ Intan & Aldo`;
                 <option value="">(Tanpa Sebutan)</option>
               </select>
             </div>
-            
+
             <div>
               <label className="block text-xs font-bold tracking-wider text-deep-burgundy/70 mb-2 uppercase">Nama Tamu</label>
-              <input 
-                type="text" 
+              <input
+                type="text"
                 className="w-full bg-transparent border border-deep-burgundy/30 px-4 py-2.5 text-sm outline-none focus:border-deep-burgundy rounded-lg"
-                placeholder="Contoh: Budi Santoso"
+                placeholder="Contoh: Dayat Solder"
                 value={guestName}
                 onChange={(e) => setGuestName(e.target.value)}
               />
@@ -104,14 +104,14 @@ Intan & Aldo`;
           </div>
 
           <div className="flex flex-col sm:flex-row gap-3">
-            <button 
+            <button
               onClick={handleCopy}
               disabled={!guestName.trim()}
               className="flex-1 bg-surface-container border border-deep-burgundy text-deep-burgundy py-3 rounded-lg font-bold text-xs tracking-wider flex items-center justify-center gap-2 hover:bg-deep-burgundy hover:text-white transition disabled:opacity-50 disabled:cursor-not-allowed uppercase"
             >
               <span className="material-symbols-outlined text-[18px]">content_copy</span> Copy
             </button>
-            <button 
+            <button
               onClick={handleSendWA}
               disabled={!guestName.trim()}
               className="flex-1 bg-[#25D366] text-white py-3 rounded-lg font-bold text-xs tracking-wider flex items-center justify-center gap-2 hover:bg-[#128C7E] transition disabled:opacity-50 disabled:cursor-not-allowed uppercase border-none"
@@ -131,7 +131,7 @@ Intan & Aldo`;
               <span className="material-symbols-outlined text-[16px]">refresh</span>
             </button>
           </div>
-          
+
           <div className="flex-1 overflow-y-auto pr-2 space-y-4">
             {loading ? (
               <div className="text-center py-10 text-deep-burgundy/50">Loading data...</div>
@@ -147,7 +147,20 @@ Intan & Aldo`;
                     </span>
                   </div>
                   {guest.wishes && (
-                    <p className="text-sm text-deep-burgundy/80 italic mt-2 bg-white p-3 rounded border border-deep-burgundy/5">"{guest.wishes}"</p>
+                    <div className="mt-2">
+                      <p className="text-sm text-deep-burgundy/80 italic bg-white p-3 rounded border border-deep-burgundy/5">"{guest.wishes}"</p>
+                      <button 
+                        onClick={() => {
+                          const replyText = `Terima kasih atas doa dan kehadiran Anda, ${guest.name}. Kami sangat menghargainya! 🙏`;
+                          navigator.clipboard.writeText(replyText);
+                          alert('Draf balasan berhasil disalin! Silakan paste di chat WhatsApp dengan ' + guest.name);
+                        }}
+                        className="mt-2 text-[10px] uppercase font-bold tracking-widest flex items-center gap-1 text-deep-burgundy/60 hover:text-deep-burgundy transition"
+                      >
+                        <span className="material-symbols-outlined text-[14px]">reply</span>
+                        Salin Balasan
+                      </button>
+                    </div>
                   )}
                   <p className="text-[10px] text-deep-burgundy/40 mt-3 text-right">
                     {new Date(guest.created_at).toLocaleString('id-ID')}
