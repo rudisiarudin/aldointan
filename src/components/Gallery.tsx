@@ -1,7 +1,9 @@
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
 import { AnimatedSection } from './AnimatedSection';
 
 export const Gallery: React.FC = () => {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
   const galleryImages = [
     '/assets/images/OG4.JPG',
     '/assets/images/OG5.JPG',
@@ -23,14 +25,14 @@ export const Gallery: React.FC = () => {
       <div className="w-full max-w-7xl mx-auto px-margin-desktop relative z-10">
         {/* Featured Grid */}
         <AnimatedSection delay={0.4} className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 mb-16 md:mb-24 px-4 md:px-0">
-          <div className="col-span-2 md:col-span-1 aspect-[4/5] overflow-hidden bg-surface shadow-lg md:shadow-xl rounded-sm">
-            <img alt="Featured moment 1" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" src="/assets/images/OG7.JPG"/>
+          <div className="col-span-2 md:col-span-1 aspect-[4/5] overflow-hidden bg-surface shadow-lg md:shadow-xl rounded-sm cursor-pointer group" onClick={() => setSelectedImage('/assets/images/OG7.JPG')}>
+            <img alt="Featured moment 1" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="/assets/images/OG7.JPG"/>
           </div>
-          <div className="col-span-1 md:col-span-1 aspect-[4/5] overflow-hidden bg-surface shadow-lg md:shadow-xl mt-0 md:mt-12 rounded-sm">
-            <img alt="Featured moment 2" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" src="/assets/images/OG2.JPG"/>
+          <div className="col-span-1 md:col-span-1 aspect-[4/5] overflow-hidden bg-surface shadow-lg md:shadow-xl mt-0 md:mt-12 rounded-sm cursor-pointer group" onClick={() => setSelectedImage('/assets/images/OG2.JPG')}>
+            <img alt="Featured moment 2" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="/assets/images/OG2.JPG"/>
           </div>
-          <div className="col-span-1 md:col-span-1 aspect-[4/5] overflow-hidden bg-surface shadow-lg md:shadow-xl mt-8 md:mt-0 rounded-sm">
-            <img alt="Featured moment 3" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" src="/assets/images/OG3.JPG"/>
+          <div className="col-span-1 md:col-span-1 aspect-[4/5] overflow-hidden bg-surface shadow-lg md:shadow-xl mt-8 md:mt-0 rounded-sm cursor-pointer group" onClick={() => setSelectedImage('/assets/images/OG3.JPG')}>
+            <img alt="Featured moment 3" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="/assets/images/OG3.JPG"/>
           </div>
         </AnimatedSection>
         
@@ -39,8 +41,8 @@ export const Gallery: React.FC = () => {
           <div className="flex w-max gap-4 animate-carousel hover:cursor-grab active:cursor-grabbing">
             {/* Double the items for seamless infinite scroll */}
             {[...galleryImages, ...galleryImages].map((src, idx) => (
-              <div key={idx} className="w-[140px] md:w-[250px] aspect-[4/5] flex-shrink-0 bg-surface shadow-md rounded-sm overflow-hidden">
-                <img alt={`Gallery moment ${idx + 1}`} className="w-full h-full object-cover" src={src}/>
+              <div key={idx} className="w-[140px] md:w-[250px] aspect-[4/5] flex-shrink-0 bg-surface shadow-md rounded-sm overflow-hidden cursor-pointer group" onClick={() => setSelectedImage(src)}>
+                <img alt={`Gallery moment ${idx + 1}`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src={src}/>
               </div>
             ))}
           </div>
@@ -50,6 +52,27 @@ export const Gallery: React.FC = () => {
       {/* Decorative Elements */}
       <img alt="Floral accent right" className="absolute bottom-1/4 right-10 w-48 h-48 object-contain opacity-30 z-0 mix-blend-multiply rotate-45 pointer-events-none" src="/assets/images/4.png"/>
       <img alt="Floral accent left" className="absolute bottom-0 left-[-20px] md:left-0 w-48 md:w-64 h-auto object-contain opacity-80 z-0 mix-blend-multiply pointer-events-none" src="/assets/images/14.png" onError={(e) => e.currentTarget.style.display = 'none'} />
+      
+      {/* Lightbox / Image Viewer */}
+      {selectedImage && (
+        <div 
+          className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4 md:p-10 cursor-zoom-out" 
+          onClick={() => setSelectedImage(null)}
+        >
+          <button 
+            className="absolute top-6 right-6 text-white/70 hover:text-white bg-black/50 hover:bg-white/20 w-12 h-12 rounded-full flex items-center justify-center transition-all" 
+            onClick={() => setSelectedImage(null)}
+          >
+            <span className="material-symbols-outlined text-[24px]">close</span>
+          </button>
+          <img 
+            src={selectedImage} 
+            alt="Expanded view" 
+            className="max-w-full max-h-full object-contain drop-shadow-2xl animate-[fadeIn_0.3s_ease-out]" 
+            onClick={(e) => e.stopPropagation()} // Prevent closing when clicking the image itself
+          />
+        </div>
+      )}
     </section>
   );
 };
