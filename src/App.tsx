@@ -10,9 +10,14 @@ import { Gift } from './components/Gift';
 import { RSVP } from './components/RSVP';
 import { Closing } from './components/Closing';
 import { Footer } from './components/Footer';
+import { Admin } from './components/Admin';
 
 const App: React.FC = () => {
   const [showCover, setShowCover] = useState(true);
+
+  if (window.location.pathname === '/admin') {
+    return <Admin />;
+  }
 
   return (
     <div className={`bg-background text-on-background min-h-screen selection:bg-muted-gold/30 selection:text-deep-burgundy relative ${showCover ? 'overflow-hidden h-screen' : ''}`}>
