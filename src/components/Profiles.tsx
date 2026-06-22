@@ -100,16 +100,16 @@ export const Profiles: React.FC = () => {
             </div>
 
             {/* Profile Text Block */}
-            <div className="flex flex-row items-stretch w-full max-w-[280px] text-left relative">
+            <div className="flex flex-row-reverse items-stretch w-full max-w-[280px] text-right relative">
               {/* Vertical Title */}
-              <div className="flex flex-col items-center mr-5 pt-2">
+              <div className="flex flex-col items-center ml-5 pt-2">
                 <p style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }} className="font-label-caps text-[11px] tracking-[0.4em] text-deep-burgundy/50 uppercase">THE GROOM</p>
                 <div className="w-[1px] h-16 bg-deep-burgundy/30 mt-4"></div>
               </div>
               
               {/* Text Info */}
-              <div className="flex flex-col flex-1 relative pt-2">
-                <span className="absolute -left-2 top-0 font-wedding-script text-[80px] leading-none text-deep-burgundy/5 pointer-events-none select-none">Aldo</span>
+              <div className="flex flex-col flex-1 relative pt-2 items-end">
+                <span className="absolute -right-2 top-0 font-wedding-script text-[80px] leading-none text-deep-burgundy/5 pointer-events-none select-none">Aldo</span>
                 
                 <h3 className="font-cormorant font-bold text-5xl text-deep-burgundy mb-1 relative z-10">Aldo</h3>
                 <h4 className="font-cormorant font-bold text-[18px] text-deep-burgundy mb-2 relative z-10">Febrialdo Haudi, S.Kom</h4>
@@ -119,7 +119,7 @@ export const Profiles: React.FC = () => {
                 </p>
                 <div className="w-full h-[1px] bg-deep-burgundy/20 mb-4 relative z-10"></div>
                 
-                <a href="https://www.instagram.com/febrialdoo/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-[#8b8076]/10 border border-[#8b8076]/30 rounded-full w-fit hover:bg-[#8b8076]/20 transition-colors relative z-10">
+                <a href="https://www.instagram.com/febrialdoo/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-[#8b8076]/10 border border-[#8b8076]/30 rounded-full w-fit hover:bg-[#8b8076]/20 transition-colors relative z-10 flex-row-reverse">
                   <span className="material-symbols-outlined text-[14px] text-deep-burgundy/80">photo_camera</span>
                   <span className="font-label-caps text-[10px] tracking-widest text-deep-burgundy/80 font-bold lowercase">@febrialdoo</span>
                 </a>
