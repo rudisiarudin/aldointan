@@ -5,8 +5,8 @@ export const Gift: React.FC = () => {
   const [showGift, setShowGift] = useState(false);
 
   return (
-    <section className="py-24 px-4 md:px-margin-desktop relative bg-surface flex flex-col justify-center" id="gift">
-      <div className="max-w-lg mx-auto text-center relative z-10 flex flex-col items-center">
+    <section className="bg-surface relative py-20 px-4 md:px-margin-desktop min-h-screen w-full flex flex-col justify-center snap-start snap-always overflow-hidden" id="gift">
+      <div className="w-full max-w-lg mx-auto text-center relative z-10 flex flex-col items-center">
         
         {/* Photo and Title Row */}
         <AnimatedSection delay={0.2} className="flex flex-row items-center justify-center gap-6 md:gap-8 mb-10 w-full">

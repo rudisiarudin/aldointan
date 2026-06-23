@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { createPortal } from 'react-dom';
 import { AnimatedSection } from './AnimatedSection';
 
 export const Gallery: React.FC = () => {
@@ -17,7 +18,7 @@ export const Gallery: React.FC = () => {
   ];
 
   return (
-    <section className="py-32 bg-surface-container relative overflow-x-hidden flex flex-col justify-center" id="gallery">
+    <section className="py-24 md:py-32 bg-surface-container relative overflow-x-hidden flex flex-col justify-center snap-start snap-always min-h-screen" id="gallery">
       <AnimatedSection delay={0.2} className="px-margin-desktop mb-16 relative z-20 mix-blend-multiply flex flex-col items-center">
         <h2 className="font-headline-lg text-6xl md:text-8xl text-deep-burgundy/10 uppercase tracking-widest text-center">MOMENTS</h2>
         <h2 className="font-wedding-script text-6xl md:text-7xl text-deep-burgundy text-center -mt-12 md:-mt-16 relative z-10 drop-shadow-sm">Captured</h2>
@@ -37,7 +38,7 @@ export const Gallery: React.FC = () => {
         </div>
         
         {/* Carousel */}
-        <AnimatedSection delay={0.6} className="relative w-full overflow-hidden group pb-8">
+        <AnimatedSection delay={0.6} className="relative w-full overflow-hidden group pb-8 swiper-no-swiping">
           <div className="flex w-max gap-4 animate-carousel hover:cursor-grab active:cursor-grabbing">
             {/* Double the items for seamless infinite scroll */}
             {[...galleryImages, ...galleryImages].map((src, idx) => (
@@ -54,7 +55,7 @@ export const Gallery: React.FC = () => {
       <img alt="Floral accent left" className="absolute bottom-0 left-[-20px] md:left-0 w-48 md:w-64 h-auto object-contain opacity-80 z-0 mix-blend-multiply pointer-events-none" src="/assets/images/14.png" onError={(e) => e.currentTarget.style.display = 'none'} />
       
       {/* Lightbox / Image Viewer */}
-      {selectedImage && (
+      {selectedImage && typeof document !== 'undefined' && createPortal(
         <div 
           className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4 md:p-10 cursor-zoom-out" 
           onClick={() => setSelectedImage(null)}
@@ -71,7 +72,8 @@ export const Gallery: React.FC = () => {
             className="max-w-full max-h-full object-contain drop-shadow-2xl animate-[fadeIn_0.3s_ease-out]" 
             onClick={(e) => e.stopPropagation()} // Prevent closing when clicking the image itself
           />
-        </div>
+        </div>,
+        document.body
       )}
     </section>
   );

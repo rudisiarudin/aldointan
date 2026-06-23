@@ -20,9 +20,9 @@ export const Events: React.FC = () => {
   }, []);
 
   return (
-    <section className="bg-surface relative overflow-x-hidden" id="events">
+    <section className="bg-surface relative" id="events">
       {/* WEDDING DETAILS SECTION */}
-      <div className="py-12 md:py-16 px-4 md:px-margin-desktop bg-surface-container-lowest relative min-h-[100dvh] flex flex-col justify-center overflow-x-hidden">
+      <div className="py-12 md:py-16 px-4 md:px-margin-desktop bg-surface-container-lowest relative min-h-screen flex flex-col justify-center snap-start snap-always">
         {/* Decorative corner accents */}
         <img src="/assets/images/15.png" alt="Flower accent" className="absolute top-8 -left-6 md:top-12 md:-left-4 w-28 md:w-36 opacity-80 mix-blend-multiply rotate-[-15deg] pointer-events-none" onError={(e) => e.currentTarget.style.display = 'none'} />
         <img src="/assets/images/16.png" alt="Shoes accent" className="absolute bottom-4 right-4 md:bottom-10 md:right-10 w-32 md:w-40 opacity-80 mix-blend-multiply rotate-[10deg] pointer-events-none" onError={(e) => e.currentTarget.style.display = 'none'} />
@@ -86,7 +86,7 @@ export const Events: React.FC = () => {
       </div>
 
       {/* OUR LOVE STORY SECTION */}
-      <div className="bg-[#f7f4ef] py-12 md:py-16 px-4 md:px-margin-desktop relative flex flex-col items-center justify-center min-h-[100dvh]">
+      <div className="bg-[#f7f4ef] py-12 md:py-16 px-4 md:px-margin-desktop relative flex flex-col items-center justify-center min-h-screen snap-start snap-always">
         <div className="max-w-2xl mx-auto relative flex flex-col items-center text-center z-10 w-full">
           
           {/* Decorative Image 18.png */}

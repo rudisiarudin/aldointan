@@ -20,7 +20,7 @@ export const Profiles: React.FC = () => {
   }, []);
 
   return (
-    <section className="py-24 px-margin-desktop relative bg-surface flex items-center" id="profiles">
+    <section className="bg-surface relative pt-16 md:pt-24 pb-12 md:pb-16 overflow-x-hidden min-h-screen flex flex-col justify-center snap-start snap-always" id="profiles">
       <div className="max-w-7xl mx-auto relative flex flex-col items-center">
         <h2 className="font-headline-lg text-6xl md:text-8xl text-deep-burgundy/5 absolute top-10 right-0 tracking-widest uppercase whitespace-nowrap hidden md:block z-0 pointer-events-none">THE COUPLE</h2>
         

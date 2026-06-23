@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Cover } from './components/Cover';
 import { MusicPlayer } from './components/MusicPlayer';
 import { Navbar } from './components/Navbar';
@@ -11,9 +11,20 @@ import { RSVP } from './components/RSVP';
 import { Closing } from './components/Closing';
 import { Footer } from './components/Footer';
 import { Admin } from './components/Admin';
+import { MobileCanvas } from './components/MobileCanvas';
 
 const App: React.FC = () => {
   const [showCover, setShowCover] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   if (window.location.pathname === '/admin') {
     return <Admin />;
@@ -26,16 +37,24 @@ const App: React.FC = () => {
       {!showCover && (
         <>
           <Navbar />
-          <main className="w-full mx-auto overflow-x-hidden">
+          <main className="w-full mx-auto snap-y snap-mandatory h-[100dvh] overflow-y-auto overflow-x-hidden custom-scrollbar">
             <Hero />
-            <Profiles />
-            <Events />
-            <Gallery />
-            <Gift />
-            <RSVP />
-            <Closing />
+            {isMobile ? (
+              <div className="snap-start snap-always w-full h-[100dvh]">
+                <MobileCanvas />
+              </div>
+            ) : (
+              <>
+                <Profiles />
+                <Events />
+                <Gallery />
+                <Gift />
+                <RSVP />
+                <Closing />
+                <Footer />
+              </>
+            )}
           </main>
-          <Footer />
         </>
       )}
     </div>

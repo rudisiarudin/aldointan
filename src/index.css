@@ -6,24 +6,30 @@
   html {
     /* removed scroll-behavior: smooth; to fix choppy scroll */
   }
+
   body {
-    @apply bg-background text-on-background antialiased selection:bg-muted-gold/30 selection:text-deep-burgundy;
+    @apply bg-background text-on-background antialiased selection:bg-muted-gold/30 selection:text-deep-burgundy overflow-x-hidden;
   }
 }
 
 /* Lenis Recommended CSS to prevent jitter */
-html.lenis, html.lenis body {
+html.lenis,
+html.lenis body {
   height: auto;
 }
+
 .lenis.lenis-smooth {
   scroll-behavior: auto !important;
 }
+
 .lenis.lenis-smooth [data-lenis-prevent] {
   overscroll-behavior: contain;
 }
+
 .lenis.lenis-stopped {
   overflow: hidden;
 }
+
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
 }
@@ -32,14 +38,16 @@ html.lenis, html.lenis body {
   .material-symbols-outlined {
     font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
   }
+
   .fill-icon {
     font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
   }
-  
+
   /* Custom scrollbar for gallery */
   .hide-scrollbar::-webkit-scrollbar {
     display: none;
   }
+
   .hide-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -47,20 +55,33 @@ html.lenis, html.lenis body {
 }
 
 /* Music Player Animation */
-@keyframes musicspin { 
-  to { transform: rotate(360deg); } 
+@keyframes musicspin {
+  to {
+    transform: rotate(360deg);
+  }
 }
-.music-playing { 
-  animation: musicspin 6s linear infinite; 
+
+.music-playing {
+  animation: musicspin 6s linear infinite;
   will-change: transform;
 }
 
 /* Gift Ticket Animation */
 @keyframes popGlide {
-  0% { transform: rotate(-8deg) translate(0, 0) scale(1); }
-  50% { transform: rotate(-3deg) translate(15px, -10px) scale(1.05); filter: drop-shadow(0 15px 12px rgba(0, 0, 0, 0.15)); }
-  100% { transform: rotate(-8deg) translate(0, 0) scale(1); }
+  0% {
+    transform: rotate(-8deg) translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: rotate(-3deg) translate(15px, -10px) scale(1.05);
+    filter: drop-shadow(0 15px 12px rgba(0, 0, 0, 0.15));
+  }
+
+  100% {
+    transform: rotate(-8deg) translate(0, 0) scale(1);
+  }
 }
+
 .ticket-animating {
   animation: popGlide 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
   will-change: transform, filter;
@@ -70,29 +91,72 @@ html.lenis, html.lenis body {
 .custom-scrollbar::-webkit-scrollbar {
   width: 8px;
 }
+
 .custom-scrollbar::-webkit-scrollbar-track {
   background: #f5f5f5;
   border-radius: 10px;
 }
+
 .custom-scrollbar::-webkit-scrollbar-thumb {
   background: #7B2020;
   border-radius: 10px;
   border: 2px solid #f5f5f5;
 }
+
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: #5a1a1a;
 }
 
 /* Smooth Infinite Carousel */
 @keyframes carousel {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(calc(-50% - 1rem)); } /* Adjust for gap/margin */
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(calc(-50% - 1rem));
+  }
+
+  /* Adjust for gap/margin */
 }
+
 .animate-carousel {
   animation: carousel 35s linear infinite;
   will-change: transform;
-  transform: translateZ(0); /* force hardware acceleration */
+  transform: translateZ(0);
+  /* force hardware acceleration */
 }
+
 .animate-carousel:hover {
   animation-play-state: paused;
+}
+
+/* 2D Spatial Canvas Utilities */
+.canvas-viewport {
+  width: 100vw;
+  height: 100dvh;
+  overflow: auto;
+  scroll-snap-type: both mandatory;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.canvas-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.canvas-map {
+  width: 600vw;
+  height: 200dvh;
+  position: relative;
+}
+
+.canvas-cell {
+  position: absolute;
+  width: 100vw;
+  height: 100dvh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  overflow-y: auto;
+  overflow-x: hidden;
 }

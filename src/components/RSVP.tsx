@@ -56,7 +56,7 @@ export const RSVP: React.FC = () => {
   };
 
   return (
-    <section className="bg-surface-container-lowest py-16 px-4 md:px-margin-desktop relative flex flex-col justify-center" id="rsvp">
+    <section className="bg-surface-container relative pt-20 pb-32 px-4 md:px-margin-desktop overflow-hidden min-h-screen flex flex-col justify-center snap-start snap-always" id="rsvp">
       <div className="max-w-4xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
 
         {/* LEFT: RSVP FORM */}

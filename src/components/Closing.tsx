@@ -3,7 +3,7 @@ import { AnimatedSection } from './AnimatedSection';
 
 export const Closing: React.FC = () => {
   return (
-    <section className="py-24 md:py-32 px-4 bg-surface-container relative overflow-x-hidden flex flex-col items-center justify-center text-center">
+    <section className="py-24 md:py-32 px-4 bg-surface-container relative overflow-x-hidden flex flex-col items-center justify-center text-center snap-start snap-always">
       <div className="max-w-lg mx-auto relative z-10 w-full flex flex-col items-center">
         
         {/* Photo (Arch Shape) */}
