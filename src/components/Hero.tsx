@@ -18,7 +18,7 @@ export const Hero: React.FC = () => {
       if (ref.current) {
         return lottie.loadAnimation({
           container: ref.current,
-          renderer: 'svg',
+          renderer: 'canvas',
           loop: true,
           autoplay: true,
           path,
@@ -39,7 +39,7 @@ export const Hero: React.FC = () => {
       <div className="absolute top-[-20px] left-[-25px] w-[150px] rotate-[-200deg] z-30 pointer-events-none" ref={tlRef2}></div>
 
       {/* --- INITIAL VIEWPORT (100dvh) --- */}
-      <div className="relative z-10 w-full min-h-[100dvh] max-w-lg mx-auto flex flex-col items-center text-center px-4 pt-12 md:pt-20 overflow-hidden">
+      <div className="relative z-10 w-full min-h-[100dvh] max-w-lg mx-auto flex flex-col items-center text-center px-4 pt-12 md:pt-20 overflow-x-hidden">
         
         {/* Decorative Bottom Right */}
         <img src="/assets/images/10.png" alt="Bottom Right Decoration" className="absolute -bottom-12 -right-12 md:-bottom-16 md:-right-16 w-56 md:w-72 opacity-50 mix-blend-multiply rotate-[25deg] pointer-events-none" onError={(e) => e.currentTarget.style.display = 'none'} />
@@ -48,18 +48,24 @@ export const Hero: React.FC = () => {
         <div className="flex-grow flex flex-col justify-center items-center w-full relative z-10">
           
           {/* Top Decorative Image */}
-          <AnimatedSection delay={0.2} className="-mt-12 md:-mt-16 mb-10 w-40 md:w-56 drop-shadow-sm opacity-90 mix-blend-multiply transition-transform duration-700 hover:scale-105">
+          <AnimatedSection delay={0.2} className="-mt-12 md:-mt-16 mb-10 w-40 md:w-56 opacity-90 transition-transform duration-700 hover:scale-105">
             <img src="/assets/images/1.png" alt="Top Decoration" className="w-full h-auto object-contain" onError={(e) => e.currentTarget.style.display = 'none'} />
           </AnimatedSection>
 
           {/* Title, Names, and Date Section */}
-          <AnimatedSection delay={0.4} className="flex flex-col items-center mb-8 w-full">
-            <h1 className="font-label-caps text-[11px] md:text-[13px] text-deep-burgundy/80 uppercase tracking-[0.4em] mb-4">
-              THE WEDDING OF
-            </h1>
-            <h2 className="font-cormorant italic text-5xl md:text-6xl text-deep-burgundy drop-shadow-sm mb-4">Intan &amp; Aldo</h2>
-            <p className="font-label-caps text-[10px] tracking-[0.3em] text-deep-burgundy/60 uppercase">04 Juli 2026</p>
-          </AnimatedSection>
+          <div className="flex flex-col items-center mb-8 w-full">
+            <AnimatedSection delay={0.3}>
+              <h1 className="font-label-caps text-[11px] md:text-[13px] text-deep-burgundy/80 uppercase tracking-[0.4em] mb-4 text-center">
+                THE WEDDING OF
+              </h1>
+            </AnimatedSection>
+            <AnimatedSection delay={0.5}>
+              <h2 className="font-cormorant italic text-5xl md:text-6xl text-deep-burgundy drop-shadow-sm mb-4 text-center">Intan &amp; Aldo</h2>
+            </AnimatedSection>
+            <AnimatedSection delay={0.7}>
+              <p className="font-label-caps text-[10px] tracking-[0.3em] text-deep-burgundy/60 uppercase text-center">04 Juli 2026</p>
+            </AnimatedSection>
+          </div>
 
           {/* Quote */}
           <AnimatedSection delay={0.6} className="font-cormorant text-[15px] md:text-[17px] text-deep-burgundy/80 italic mb-10 max-w-[280px]">
@@ -104,14 +110,14 @@ export const Hero: React.FC = () => {
         </div>
 
         {/* Scroll Down Animation */}
-        <div className="mt-auto pb-8 pt-8 flex flex-col items-center animate-bounce opacity-70">
+        <div className="mt-auto pb-8 pt-8 flex flex-col items-center opacity-70">
           <span className="font-label-caps text-[8px] tracking-[0.3em] uppercase text-deep-burgundy/50 mb-2">Scroll Down</span>
-          <img src="/assets/images/12.png" className="w-4 md:w-5 rotate-[180deg] filter sepia hue-rotate-[320deg] saturate-[3] brightness-75" alt="Scroll Down" />
+          <img src="/assets/images/12.png" className="w-4 md:w-5 animate-bounce" alt="Scroll Down" />
         </div>
       </div>
 
       {/* --- SCROLL DOWN SECTION (BELOW FOLD) --- */}
-      <div className="relative z-10 w-full min-h-[100dvh] max-w-lg mx-auto flex flex-col items-center justify-center text-center px-4 py-16 bg-[#FDF8F3] overflow-hidden">
+      <div className="relative z-10 w-full min-h-[100dvh] max-w-lg mx-auto flex flex-col items-center justify-center text-center px-4 py-16 bg-[#FDF8F3] overflow-x-hidden">
         {/* Tilted Polaroid Frame */}
         <AnimatedSection delay={0.2} className="relative w-full max-w-[220px] md:max-w-[260px] aspect-[4/5] md:aspect-square mx-auto mb-10">
           {/* Decorative Back Frame */}
@@ -121,7 +127,7 @@ export const Hero: React.FC = () => {
             <div className="w-full h-full relative overflow-hidden border border-deep-burgundy/10">
                 <img 
                   alt="Intan & Aldo Hero Portrait" 
-                  className="w-full h-full object-cover object-top filter contrast-[1.1] scale-105" 
+                  className="w-full h-full object-cover object-top scale-105" 
                   src="/assets/images/pw1.jpg" 
                 />
             </div>
@@ -131,14 +137,18 @@ export const Hero: React.FC = () => {
         </AnimatedSection>
 
         {/* Quran Verse */}
-        <AnimatedSection delay={0.4} className="max-w-[480px] w-full mx-auto text-left mt-2">
-          <p className="font-label-caps text-[12px] md:text-[14px] text-deep-burgundy/80 font-bold uppercase tracking-[0.2em] mb-4 px-4">
-            QS. AR-RUM : 21
-          </p>
-          <p className="font-cormorant text-[15px] md:text-[17px] leading-relaxed text-on-surface-variant italic font-medium px-4">
-            "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir"
-          </p>
-        </AnimatedSection>
+        <div className="max-w-[480px] w-full mx-auto text-left mt-2">
+          <AnimatedSection delay={0.4}>
+            <p className="font-label-caps text-[12px] md:text-[14px] text-deep-burgundy/80 font-bold uppercase tracking-[0.2em] mb-4 px-4">
+              QS. AR-RUM : 21
+            </p>
+          </AnimatedSection>
+          <AnimatedSection delay={0.6}>
+            <p className="font-cormorant text-[15px] md:text-[17px] leading-relaxed text-on-surface-variant italic font-medium px-4">
+              "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir"
+            </p>
+          </AnimatedSection>
+        </div>
       </div>
     </section>
   );

@@ -5,22 +5,25 @@ interface AnimatedSectionProps {
   children: React.ReactNode;
   delay?: number;
   className?: string;
+  onClick?: () => void;
 }
 
 export const AnimatedSection: React.FC<AnimatedSectionProps> = ({ 
   children, 
   delay = 0, 
-  className = "" 
+  className = "",
+  onClick
 }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 15 }}
+      onClick={onClick}
+      initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-10%" }}
+      viewport={{ once: true, margin: "-5%" }}
       transition={{ 
         duration: 1.2, 
         delay: delay, 
-        ease: [0.22, 1, 0.36, 1] // Sangat halus dan pelan di akhir
+        ease: [0.16, 1, 0.3, 1] // Elegant custom easing (easeOutExpo-like)
       }}
       className={className}
     >

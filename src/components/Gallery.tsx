@@ -17,24 +17,24 @@ export const Gallery: React.FC = () => {
   ];
 
   return (
-    <section className="py-32 bg-surface-container relative overflow-hidden flex flex-col justify-center" id="gallery">
+    <section className="py-32 bg-surface-container relative overflow-x-hidden flex flex-col justify-center" id="gallery">
       <AnimatedSection delay={0.2} className="px-margin-desktop mb-16 relative z-20 mix-blend-multiply flex flex-col items-center">
         <h2 className="font-headline-lg text-6xl md:text-8xl text-deep-burgundy/10 uppercase tracking-widest text-center">MOMENTS</h2>
         <h2 className="font-wedding-script text-6xl md:text-7xl text-deep-burgundy text-center -mt-12 md:-mt-16 relative z-10 drop-shadow-sm">Captured</h2>
       </AnimatedSection>
       <div className="w-full max-w-7xl mx-auto px-margin-desktop relative z-10">
         {/* Featured Grid */}
-        <AnimatedSection delay={0.4} className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 mb-16 md:mb-24 px-4 md:px-0">
-          <div className="col-span-2 md:col-span-1 aspect-[4/5] overflow-hidden bg-surface shadow-lg md:shadow-xl rounded-sm cursor-pointer group" onClick={() => setSelectedImage('/assets/images/OG7.JPG')}>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 mb-16 md:mb-24 px-4 md:px-0">
+          <AnimatedSection delay={0.2} className="col-span-2 md:col-span-1 aspect-[4/5] overflow-hidden bg-surface shadow-lg md:shadow-xl rounded-sm cursor-pointer group" onClick={() => setSelectedImage('/assets/images/OG7.JPG')}>
             <img alt="Featured moment 1" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="/assets/images/OG7.JPG"/>
-          </div>
-          <div className="col-span-1 md:col-span-1 aspect-[4/5] overflow-hidden bg-surface shadow-lg md:shadow-xl mt-0 md:mt-12 rounded-sm cursor-pointer group" onClick={() => setSelectedImage('/assets/images/OG2.JPG')}>
+          </AnimatedSection>
+          <AnimatedSection delay={0.4} className="col-span-1 md:col-span-1 aspect-[4/5] overflow-hidden bg-surface shadow-lg md:shadow-xl mt-0 md:mt-12 rounded-sm cursor-pointer group" onClick={() => setSelectedImage('/assets/images/OG2.JPG')}>
             <img alt="Featured moment 2" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="/assets/images/OG2.JPG"/>
-          </div>
-          <div className="col-span-1 md:col-span-1 aspect-[4/5] overflow-hidden bg-surface shadow-lg md:shadow-xl mt-8 md:mt-0 rounded-sm cursor-pointer group" onClick={() => setSelectedImage('/assets/images/OG3.JPG')}>
+          </AnimatedSection>
+          <AnimatedSection delay={0.6} className="col-span-1 md:col-span-1 aspect-[4/5] overflow-hidden bg-surface shadow-lg md:shadow-xl mt-8 md:mt-0 rounded-sm cursor-pointer group" onClick={() => setSelectedImage('/assets/images/OG3.JPG')}>
             <img alt="Featured moment 3" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="/assets/images/OG3.JPG"/>
-          </div>
-        </AnimatedSection>
+          </AnimatedSection>
+        </div>
         
         {/* Carousel */}
         <AnimatedSection delay={0.6} className="relative w-full overflow-hidden group pb-8">

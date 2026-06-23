@@ -20,20 +20,24 @@ const App: React.FC = () => {
   }
 
   return (
-    <div className={`bg-background text-on-background min-h-screen selection:bg-muted-gold/30 selection:text-deep-burgundy relative ${showCover ? 'overflow-hidden h-screen' : ''}`}>
+      <div className={`bg-background text-on-background min-h-screen selection:bg-muted-gold/30 selection:text-deep-burgundy relative ${showCover ? 'overflow-hidden h-screen' : ''}`}>
       {showCover && <Cover onOpen={() => setShowCover(false)} />}
       <MusicPlayer isVisible={!showCover} />
-      <Navbar />
-      <main className="w-full mx-auto overflow-hidden">
-        <Hero />
-        <Profiles />
-        <Events />
-        <Gallery />
-        <Gift />
-        <RSVP />
-        <Closing />
-      </main>
-      <Footer />
+      {!showCover && (
+        <>
+          <Navbar />
+          <main className="w-full mx-auto overflow-x-hidden">
+            <Hero />
+            <Profiles />
+            <Events />
+            <Gallery />
+            <Gift />
+            <RSVP />
+            <Closing />
+          </main>
+          <Footer />
+        </>
+      )}
     </div>
   );
 };

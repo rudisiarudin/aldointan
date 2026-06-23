@@ -33,7 +33,7 @@ export const Cover: React.FC<CoverProps> = ({ onOpen }) => {
       <img src="/assets/images/4.png" className="absolute -top-16 -left-16 w-72 opacity-20 mix-blend-multiply pointer-events-none z-0" alt=""/>
       <img src="/assets/images/4.png" className="absolute -bottom-16 -right-16 w-72 opacity-20 mix-blend-multiply rotate-180 pointer-events-none z-0" alt=""/>
 
-      <div className="relative z-20 flex flex-col items-center justify-between text-center px-6 py-10 max-w-lg w-full h-[100dvh] overflow-hidden">
+      <div className="relative z-20 flex flex-col items-center justify-between text-center px-6 py-10 max-w-lg w-full h-[100dvh] overflow-x-hidden overflow-y-auto">
 
         {/* Title, Names, and Date Section */}
         {/* Title, Names, and Date Section */}

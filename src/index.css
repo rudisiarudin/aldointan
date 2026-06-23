@@ -4,11 +4,28 @@
 
 @layer base {
   html {
-    scroll-behavior: smooth;
+    /* removed scroll-behavior: smooth; to fix choppy scroll */
   }
   body {
     @apply bg-background text-on-background antialiased selection:bg-muted-gold/30 selection:text-deep-burgundy;
   }
+}
+
+/* Lenis Recommended CSS to prevent jitter */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }
 
 @layer utilities {
@@ -35,6 +52,7 @@
 }
 .music-playing { 
   animation: musicspin 6s linear infinite; 
+  will-change: transform;
 }
 
 /* Gift Ticket Animation */
@@ -45,6 +63,7 @@
 }
 .ticket-animating {
   animation: popGlide 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  will-change: transform, filter;
 }
 
 /* Custom Scrollbar */
@@ -71,6 +90,8 @@
 }
 .animate-carousel {
   animation: carousel 35s linear infinite;
+  will-change: transform;
+  transform: translateZ(0); /* force hardware acceleration */
 }
 .animate-carousel:hover {
   animation-play-state: paused;
